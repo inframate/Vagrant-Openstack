@@ -6,7 +6,7 @@ hosts = {
  
 
   
-    "OpenStack" => "192.168.88.100",
+    "OpenStackVM" => "192.168.88.100",
 
 
  
@@ -14,7 +14,11 @@ hosts = {
  
 Vagrant.configure("2") do |config|
  
-    config.vm.box = "bento/ubuntu-16.04"
+	config.vm.box = "bento/ubuntu-16.04"
+	#ssh key management
+	#config.ssh.insert_key = false
+    	#config.ssh.private_key_path = ["~/.ssh/id_rsa",  "~/.vagrant.d/insecure_private_key"]
+	#config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/authorized_keys"
 	config.vm.provision :shell, path: "Provision-script.sh" 
 	
 		hosts.each do |name, ip|
