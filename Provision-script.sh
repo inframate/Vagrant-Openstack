@@ -1,4 +1,6 @@
 #!/bin/bash
+#correct /etc/hosts
+sed -ri 's/127\.0\.0\.1\s.*/127.0.0.1 localhost localhost.localdomain/' /etc/hosts
 # the box swappiness is 60 we need to decrease it to improve perfermance through using RAM rather than swap memory
 sudo sysctl vm.swappiness=0
 sudo echo "vm.swappiness=0" >> /etc/sysctl.conf
